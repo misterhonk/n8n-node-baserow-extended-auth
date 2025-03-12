@@ -1,4 +1,18 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-node-baserow-extended-auth
+
+Custom n8n node for interacting with the Baserow API, with extended authentication options for self-hosted instances.
+
+## Features
+- Supports all row operations: Create, Delete, Get, Get Many, Update.
+- Extended authentication:
+  - Username/Password for Baserow Cloud.
+  - API Token and custom Host URL for self-hosted instances.
+
+## Installation
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/misterhonk/n8n-node-baserow-extended-auth.git
+   cd n8n-node-baserow-extended-auth
 
 # n8n-nodes-starter
 

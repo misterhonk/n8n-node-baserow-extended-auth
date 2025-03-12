@@ -1,19 +1,23 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-node-baserow-extended-auth",
   "version": "0.1.0",
-  "description": "",
+  "description": "Custom n8n node for Baserow API with extended authentication",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node",
+    "n8n-community-node-package",
+    "baserow",
+    "api",
+    "extended-auth"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/misterhonk/n8n-node-baserow-extended-auth",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "misterhonk",
+    "email": "your.email@example.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "git+https://github.com/misterhonk/n8n-node-baserow-extended-auth.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -36,12 +40,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/BaserowExtendedAuthApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/BaserowExtendedAuth/BaserowExtendedAuth.node.js"
     ]
   },
   "devDependencies": {

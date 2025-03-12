@@ -1,0 +1,13 @@
+{
+  "name": "baserowExtendedAuth",
+  "nodeTypes": ["./BaserowExtendedAuth.node.ts"],
+  "credentials": ["../../credentials/BaserowExtendedAuthApi.credentials.ts"],
+  "codex": {
+    "categories": ["Database", "API"],
+    "resources": {
+      "primaryDocumentation": {
+        "url": "https://baserow.io/docs/apis/rest-api"
+      }
+    }
+  }
+}
