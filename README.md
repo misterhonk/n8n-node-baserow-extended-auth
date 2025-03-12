@@ -1,60 +1,174 @@
 # n8n-node-baserow-extended-auth
 
-Custom n8n node for interacting with the Baserow API, with extended authentication options for self-hosted instances.
+This custom n8n node provides enhanced functionality for interacting with the Baserow API, with extended authentication options for both cloud and self-hosted Baserow instances.
 
 ## Features
-- Supports all row operations: Create, Delete, Get, Get Many, Update.
-- Extended authentication:
-  - Username/Password for Baserow Cloud.
-  - API Token and custom Host URL for self-hosted instances.
+
+- **Extended Authentication Options**:
+  - Username/Password authentication for Baserow Cloud
+  - API Token authentication for self-hosted Baserow instances
+  - Custom Host URL configuration for connecting to any Baserow instance
+
+- **Complete Row Operations**:
+  - Create: Add new rows to tables with field mapping
+  - Read: Get individual rows by ID
+  - Update: Modify existing rows with field mapping
+  - Delete: Remove rows from tables
+  - List: Get multiple rows with advanced filtering, sorting, and pagination
+
+- **Advanced Data Handling**:
+  - Auto-mapping of input data to Baserow fields
+  - Field name to ID conversion for easier data manipulation
+  - Support for complex filtering with multiple conditions
+  - Sorting options for result ordering
+
+- **Database and Table Management**:
+  - Dynamic loading of databases, tables, and fields
+  - User-friendly dropdown selectors for database and table selection
 
 ## Installation
+
+### Local Installation (for development)
+
 1. Clone this repository:
    ```bash
-   git clone https://github.com/misterhonk/n8n-node-baserow-extended-auth.git
+   git clone https://github.com/yourusername/n8n-node-baserow-extended-auth.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
    cd n8n-node-baserow-extended-auth
-
-# n8n-nodes-starter
-
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
-
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
-
-## Prerequisites
-
-You need the following installed on your development machine:
-
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
-
-## Using this starter
-
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
-
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
    ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
+
+3. Install dependencies:
+   ```bash
+   pnpm install
    ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
 
-## More information
+4. Build the project:
+   ```bash
+   pnpm build
+   ```
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+5. Link to your n8n installation:
+   ```bash
+   pnpm link
+   cd ~/.n8n/custom
+   pnpm link n8n-node-baserow-extended-auth
+   ```
+
+### Production Installation
+
+1. Install via npm:
+   ```bash
+   npm install n8n-node-baserow-extended-auth
+   ```
+
+2. Add to your n8n installation:
+   - For Docker: Add to your custom nodes directory
+   - For standard installation: Install in the `.n8n/custom` directory
+
+## Authentication
+
+### Baserow Cloud Authentication
+
+1. In n8n, create a new credential of type "Baserow Extended Auth API"
+2. Select "Username/Password (Cloud)" as the Authentication Type
+3. Enter your Baserow username and password
+4. Use the default host URL (`https://api.baserow.io`) or specify a custom one if needed
+
+### Self-Hosted Baserow Authentication
+
+1. In n8n, create a new credential of type "Baserow Extended Auth API"
+2. Select "API Token (Self-Hosted)" as the Authentication Type
+3. Generate an API token in your self-hosted Baserow instance:
+   - Log in to your Baserow instance
+   - Go to your account settings
+   - Navigate to the API tokens section
+   - Create a new token with appropriate permissions
+4. Enter the API token in the credential
+5. Specify the host URL of your self-hosted Baserow instance (e.g., `https://baserow.yourdomain.com`)
+
+## Usage
+
+### Working with Rows
+
+#### Create a Row
+
+1. Add the "Baserow Extended Auth" node to your workflow
+2. Select "Row" as the Resource
+3. Choose "Create" as the Operation
+4. Select your Database and Table
+5. Choose how to send data:
+   - "Auto-Map Input Data": Maps incoming data to Baserow fields automatically
+   - "Define Below": Manually specify field values
+
+#### Get a Row
+
+1. Add the "Baserow Extended Auth" node to your workflow
+2. Select "Row" as the Resource
+3. Choose "Get" as the Operation
+4. Select your Database and Table
+5. Enter the Row ID to retrieve
+
+#### Get All Rows
+
+1. Add the "Baserow Extended Auth" node to your workflow
+2. Select "Row" as the Resource
+3. Choose "Get All" as the Operation
+4. Select your Database and Table
+5. Configure filtering, sorting, and pagination options as needed
+
+#### Update a Row
+
+1. Add the "Baserow Extended Auth" node to your workflow
+2. Select "Row" as the Resource
+3. Choose "Update" as the Operation
+4. Select your Database and Table
+5. Enter the Row ID to update
+6. Choose how to send data:
+   - "Auto-Map Input Data": Maps incoming data to Baserow fields automatically
+   - "Define Below": Manually specify field values
+
+#### Delete a Row
+
+1. Add the "Baserow Extended Auth" node to your workflow
+2. Select "Row" as the Resource
+3. Choose "Delete" as the Operation
+4. Select your Database and Table
+5. Enter the Row ID to delete
+
+## Advanced Options
+
+### Filtering
+
+When using the "Get All" operation, you can apply filters to narrow down the results:
+
+1. In the "Options" section, expand "Filters"
+2. Add one or more filter conditions by selecting:
+   - Field: The field to filter on
+   - Filter: The comparison operator (equals, contains, greater than, etc.)
+   - Value: The value to compare against
+3. Set the "Filter Type" to determine how multiple filters are combined:
+   - AND: All conditions must be met
+   - OR: Any condition can be met
+
+### Sorting
+
+To sort the results when using the "Get All" operation:
+
+1. In the "Options" section, expand "Sorting"
+2. Add one or more sort criteria by selecting:
+   - Field: The field to sort by
+   - Direction: Ascending or Descending
+
+### Search
+
+You can also perform a text search across all fields:
+
+1. In the "Options" section, enter a "Search Term"
+2. The node will return rows where any field contains the search term
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+[MIT](LICENSE)
